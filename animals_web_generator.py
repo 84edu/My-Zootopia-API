@@ -1,21 +1,9 @@
 import json
-import requests
-
-API_KEY = "9qkkwKRItMCG15zUuEjq9qfJEihI3enNTvYWsZDN"
+import data_fetcher
 
 
 def user_inquiry():
     return input("Please enter an animal name: ")
-
-
-def load_data(animal_name):
-    api_url = f'https://api.api-ninjas.com/v1/animals?name={animal_name}'
-    response = requests.get(api_url, headers={'X-Api-Key': API_KEY})
-    if response.status_code == requests.codes.ok:
-        return response.json()
-    else:
-        print("Error:", response.status_code, response.text)
-        return []
 
 
 def load_html(file_path):
@@ -68,7 +56,7 @@ def get_animals_data(animals_data, animal_name):
 
 def main(animals_string=None):
     animal_name_from_user = user_inquiry()
-    animals_data = load_data(animal_name_from_user)
+    animals_data = data_fetcher.fetch_data(animal_name_from_user)
     template_content = load_html("animals_template.html")
     animals_string = get_animals_data(animals_data, animal_name_from_user)
     new_html_content = template_content.replace("__REPLACE_ANIMALS_INFO__", animals_string)
