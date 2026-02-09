@@ -54,8 +54,11 @@ def serialize_animal(animal_obj):
     return output
 
 
-def get_animals_data(animals_data):
-    """A long string with all animals data"""
+def get_animals_data(animals_data, animal_name):
+    """A long string with all animals data or an error message,"""
+    """if th list is empty."""
+    if not animals_data:
+        return f'<h2>The animal "{animal_name}" doesn\'t exist.</h2>'
     output = ""
     for animal_obj in animals_data:
         output += serialize_animal(animal_obj)
@@ -67,7 +70,7 @@ def main(animals_string=None):
     animal_name_from_user = user_inquiry()
     animals_data = load_data(animal_name_from_user)
     template_content = load_html("animals_template.html")
-    animals_string = get_animals_data(animals_data)
+    animals_string = get_animals_data(animals_data, animal_name_from_user)
     new_html_content = template_content.replace("__REPLACE_ANIMALS_INFO__", animals_string)
 
     with open("animals.html", "w") as file:
