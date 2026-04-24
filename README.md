@@ -1,46 +1,53 @@
-# Animal Data Web Generator
+# My-Zootopia-API
 
-A Python-based web tool that fetches real-time animal data from an external API and generates a stylish, structured HTML website based on user input.
+An educational web generator that displays information about animals from the Animals API.
 
-## Features
-- **Dynamic Search:** Users can search for any animal by name.
-- **API Integration:** Fetches detailed information (diet, location, type, etc.) from the [API-Ninjas Animals API](https://api-ninjas.com/api/animals).
-- **Template-Based Generation:** Uses an HTML template to create a clean, consistent user interface.
-- **Error Handling:** Displays a user-friendly message if an animal is not found in the database.
-- **Security:** Uses environment variables to protect sensitive API keys.
+## Tech Stack
 
-## Project Structure
-- `animals_web_generator.py`: The main script that handles user input and HTML generation.
-- `data_fetcher.py`: A specialized module for handling API requests.
-- `animals_template.html`: The base template used for generating the website.
-- `.env`: (Local only) Stores your private API_KEY.
-- `requirements.txt`: Lists the necessary Python packages.
-
-## Prerequisites
-- Python 3.x
-- An API Key from [API-Ninjas](https://api-ninjas.com/)
+- **Backend**: Python
+- **Frontend**: HTML
+- **API**: Animals API (api-ninjas.com)
 
 ## Installation
-To install this project, simply clone the repository and install the dependencies in requirements.txt using `pip`
+
+1. Clone the repository:
+```bash
+git clone https://github.com/84edu/My-Zootopia-API.git
+cd My-Zootopia-API
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Set up your API key:
+   - Get a free API key from [api-ninjas.com](https://api-ninjas.com/)
+   - Create a `.env` file in the project root:
+   ```
+   API_KEY=your_api_key_here
+   ```
 
 ## Usage
-To use this project, run the following command - `python animals_web_generator.py`.
 
-## Contributing Guidelines
+Run the web generator:
+```bash
+python animals_web_generator.py
+```
 
-Contributions make the open-source community an amazing place to learn and create!
+Enter an animal name when prompted. The script will:
+1. Fetch animal data from the Animals API
+2. Generate an HTML page with the animal information
+3. Save it as `animals.html`
 
-1. **Fork the Project**
-2. **Create your Feature Branch**
-    ```bash
-    git checkout -b feature/AmazingFeature
+## Project Structure
 
-3. **Commit your Changes**
-    ```bash
-    git commit -m 'Add some AmazingFeature'
-4. **Push to the Branch**
-    ```bash
-    git push origin feature/AmazingFeature
-5. **Open a pull request**
+- `animals_web_generator.py` - Main script to generate HTML pages
+- `data_fetcher.py` - Fetches animal data from the API
+- `animals_template.html` - HTML template for displaying animals
+- `animals_data.json` - Sample animal data
+- `animals.html` - Generated output file
 
-Please ensure your code follows the existing modular structure and includes comments for new functions.
+## License
+
+Educational purposes only.
